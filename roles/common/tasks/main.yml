@@ -24,3 +24,6 @@
     name: sshd
     state: restarted
   when: ssh_config.changed
+- yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: present
