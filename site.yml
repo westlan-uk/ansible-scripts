@@ -1,0 +1,16 @@
+---
+- hosts: all
+  roles:
+    - common
+
+- hosts: gameserver
+  roles:
+    - gameserver
+
+- hosts: lamp
+  roles:
+    - lamp
+
+- hosts: lancache
+  roles:
+    - lancache
