@@ -2,4 +2,21 @@
 - yum: package={{item}} state=present
   with_items: 
     - nginx
+    - php
+    - httpd
+- name: Update httpd to listen on port 8080
+  lineinfile:
+    dest: /etc/httpd/conf/httpd.conf
+    regexp: "^Listen"
+    line: "Listen 8080"
+    insertafter: EOF
+    state: present
+- git:
+    repo: "https://github.com/bntjah/lancache.git"
+    dest: /opt/lancache/
 - service: name=nginx state=started enabled=yes
+- git:
+    repo: "https://github.com/westlan-uk/lancache-status.git"
+    dest: /var/www/html/
+- service: name=httpd state=started enabled=yes
+
